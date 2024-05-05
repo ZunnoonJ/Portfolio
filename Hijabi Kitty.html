@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<meta charset="utf-8">
+<title>Hijabi Kitty</title>
+<style>
+	.serial{font-family: Arial;position: absolute;top:8px;left:238px;font-size: 36px;font-weight: 600}
+	.card-w{width:290px;height:400px;background-color: #FFF6DB;border-radius: 18px;border: 4px black solid;position: relative;z-index:2}
+	.card-s{width:290px;height:400px;background-color: #5C5C5C;border-radius: 18px;border: 4px black solid;position: absolute;z-index:1;top: 9px}
+	button{width:100px;height: 100px;background-color: #FFF6DB;border-radius: 18px;border: 4px black solid;font-size: 50px;;cursor:pointer}
+</style>
+</head>
+
+<body style="background-color: antiquewhite;font-family: Arial">
+	<br>
+<div style="display:flex;justify-content: center;align-items: center"><img src="Banner.gif"></div>
+	<br><br><br><br>
+<div style="position: relative;display: flex;justify-content: center;flex-direction: row;align-items: center;gap:50px">
+<div><button onClick="cardrev(),posadjust()"><ion-icon style="position:relative;top:5px;right:1px" name="play-skip-back-sharp"></ion-icon></button></div>
+<div>
+<div class="card-s"></div>
+<div class="card-w" style="display:flex;justify-content: center;flex-direction: column;align-items: center">
+<div class="serial" id="serialno">#1</div>  
+<iframe id="mygif" src="https://giphy.com/embed/BGI6WpyyVN2RMowQzc" width="250" height="250" frameBorder="0" class="giphy-embed" style="position: absolute;top:0;"></iframe>
+<div style="font-size:36px;font-weight: 600;position: absolute;top: 279px;text-align: center" id="cdate">Created On:<br>4th May 2024</div>
+</div>
+</div>
+<div><button onClick="cardcycle(),posadjust()"><ion-icon style="position:relative;top:6px;left:2px" name="play"></ion-icon></button></div>
+</div>
+<script>
+var count = 0
+var srcs = ["BGI6WpyyVN2RMowQzc","7ItyJVthWLBI6rEpbP","3A3uFj4eBWdXDk0cPI","qL3y4F9KkMjwfcFsvY","fyNeAczBN32MwNpLAZ"]
+var dates = ["4th May 2024","5th May 2024","5th May 2024","5th May 2024","5th May 2024"]
+function cardcycle(){
+	if(count>3){
+		count = -1
+	}
+	count +=1
+	mygif.src="https://giphy.com/embed/"+srcs[count]
+	cdate.innerHTML="Created On:<br>"+dates[count]
+	serialno.innerHTML="#"+(count+1)
+}
+function cardrev(){	
+	count-=1
+	if (count<0){
+		count=4
+	}
+
+	mygif.src="https://giphy.com/embed/"+srcs[count]
+	cdate.innerHTML="Created On:<br>"+dates[count]
+	serialno.innerHTML="#"+(count+1)
+}
+</script>
+</body>
+</html>
